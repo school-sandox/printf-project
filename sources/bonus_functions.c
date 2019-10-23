@@ -72,7 +72,7 @@ void			pf_putdouble(t_printf *p)
 	double		decimal;
 	long		value;
 
-	n = (double)va_arg(p->ap, double);
+	n = (double)va_arg(p->ap, long double);
 	(p->f & F_ZERO) ? p->accuracy = p->min_length : 0;
 	if (!(p->f & F_APP_PRECI))
 		p->accuracy = 6;

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/sstannis/eg/sources/ft_printf.c
+ft_printf.h
+/Users/sstannis/eg/sources/ft_printf.h
+stdio.h
+-
+
+/Users/sstannis/eg/sources/ft_printf.h
+libft.h
+/Users/sstannis/eg/sources/libft.h
+stdarg.h
+-
+errno.h
+-
+stdio.h
+-
+
+/Users/sstannis/eg/sources/libft.h
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+
+/Users/sstannis/eg/sources/parse_arguments.c
+ft_printf.h
+/Users/sstannis/eg/sources/ft_printf.h
+

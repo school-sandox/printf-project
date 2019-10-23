@@ -94,12 +94,15 @@ void		parse_opt(t_printf *p)
 	{
 		if (*p->format == 'l')
 			p->f |= (p->format[1] == 'l' && ++p->format) ? F_LONG2 : F_LONG;
+
 		else if (*p->format == 'h')
 			p->f |= (p->format[1] == 'h' && ++p->format) ? F_SHORT2 : F_SHORT;
 		else if (*p->format == 'j')
 			p->f |= F_INTMAX;
 		else if (*p->format == 'z')
 			p->f |= F_SIZE_T;
+        else if (*p->format == 'L')
+            p->f |= (p->format[1] == 'l' && ++p->format) ? F_LONG2 : F_LONG;
 		else
 			break ;
 		++p->format;

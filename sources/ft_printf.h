@@ -17,7 +17,7 @@
 ** -------------------------- External Headers ---------------------------------
 */
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <errno.h>
 # include <stdio.h>
