@@ -6,7 +6,7 @@
 /*   By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 21:36:51 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/10/22 00:13:34 by jmacgyve         ###   ########.fr       */
+/*   Updated: 2019/10/24 03:44:00 by jmacgyve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	conversion_specifier(t_printf *p)
 		(p->f & F_LONG || p->f & F_LONG2) ? pf_putwstr(p) : pf_putstr(p);
 	else if (ft_strchr("dDi", p->c))
 		pf_putnb(p);
-	else if (p->c == 'f' || p->c == 'F')
+	else if ((p->c == 'f' || p->c == 'F') && !(p->is_lf == 'y'))
 		(p->f & F_APP_PRECI && !p->accuracy) ? pf_putnb(p) : pf_putdouble(p);
 	else if (p->c == 'c' || p->c == 'C')
 		pf_character(p, va_arg(p->ap, unsigned));
@@ -79,6 +79,8 @@ static void	conversion_specifier(t_printf *p)
 		ft_printf_putstr(STRERR(errno), p);
 	else if (p->c == '{')
 		color(p);
+	else if ((p->c == 'f' || p->c == 'F') && (p->is_lf == 'y'))
+		(p->f & F_APP_PRECI && !p->accuracy) ? pf_putnb(p) : pf_putdouble_lf(p);
 	else
 		cs_not_found(p);
 }
@@ -100,6 +102,11 @@ void		parse_opt(t_printf *p)
 			p->f |= F_INTMAX;
 		else if (*p->format == 'z')
 			p->f |= F_SIZE_T;
+		else if (*p->format == 'L' && p->format[1] == 'f')
+		{
+			p->is_lf = 'y';
+			p->f |= F_LONG2;
+		} 
 		else
 			break ;
 		++p->format;

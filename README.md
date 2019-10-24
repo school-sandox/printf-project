@@ -1,2 +1,0 @@
-# printf-project
-переписываем printf

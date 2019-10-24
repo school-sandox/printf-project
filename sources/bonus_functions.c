@@ -6,7 +6,7 @@
 /*   By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 21:38:57 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/10/21 23:19:34 by jmacgyve         ###   ########.fr       */
+/*   Updated: 2019/10/24 03:43:34 by jmacgyve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,33 @@ void			pf_putdouble(t_printf *p)
 	double		decimal;
 	long		value;
 
-	n = (double)va_arg(p->ap, double);
+	n = (long double)va_arg(p->ap, double);
+	(p->f & F_ZERO) ? p->accuracy = p->min_length : 0;
+	if (!(p->f & F_APP_PRECI))
+		p->accuracy = 6;
+	len = (p->accuracy > 0) ? 1 : 0;
+	tmp = (long)(ABS(n));
+	while (tmp && ++len)
+		tmp /= 10;
+	(p->f & F_ZERO) ? p->accuracy = p->min_length : 0;
+	p->printed = p->accuracy + len + ((n < 0) ? 1 : 0);
+	decimal = ((n < 0.0f) ? -n : n);
+	decimal = (decimal - (long)(((n < 0.0f) ? -n : n))) *
+	ft_pow(10, p->accuracy + 1);
+	decimal = ((long)decimal % 10 > 4) ? (decimal) / 10 + 1 : decimal / 10;
+	value = (int)decimal;
+	ldtoa_fill(n, p, value);
+}
+
+void			pf_putdouble_lf(t_printf *p)
+{
+	long double		n;
+	long			tmp;
+	int				len;
+	long double		decimal;
+	long			value;
+	
+	n = va_arg(p->ap, long double);
 	(p->f & F_ZERO) ? p->accuracy = p->min_length : 0;
 	if (!(p->f & F_APP_PRECI))
 		p->accuracy = 6;

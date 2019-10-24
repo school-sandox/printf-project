@@ -6,7 +6,7 @@
 /*   By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 22:30:46 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/10/22 00:13:45 by jmacgyve         ###   ########.fr       */
+/*   Updated: 2019/10/24 03:45:25 by jmacgyve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct			s_printf
 	char				buff[PF_BUF_SIZE];
 	va_list				ap;
 	char				*format;
+	char				is_lf;
 	unsigned			c;
 }						t_printf;
 
@@ -131,6 +132,7 @@ void					pf_putwchar(t_printf *p, unsigned int w, int wl, int n);
 void					print_pointer_address(t_printf *p);
 void					color(t_printf *p);
 void					pf_putdouble(t_printf *p);
+void					pf_putdouble_lf(t_printf *p);
 
 /*
 ** --------------------------- Buffer Functions --------------------------------
