@@ -6,7 +6,7 @@
 /*   By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 21:36:51 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/10/24 03:44:00 by jmacgyve         ###   ########.fr       */
+/*   Updated: 2019/10/24 04:09:48 by jmacgyve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,18 +103,14 @@ void		parse_opt(t_printf *p)
 		else if (*p->format == 'z')
 			p->f |= F_SIZE_T;
 		else if (*p->format == 'L' && p->format[1] == 'f')
-		{
-			p->is_lf = 'y';
-			p->f |= F_LONG2;
-		} 
+			set_lf(p);
 		else
 			break ;
 		++p->format;
 	}
 	parse_flags(p);
 	(p->f & F_PLUS) ? p->f &= ~F_SPACE : 0;
-	if (ft_strchr("CDSUOBX", *p->format))
-		p->f |= (*p->format != 'X') ? F_LONG : F_UPCASE;
+	set_cdsuobx(p);
 	conversion_specifier(p);
 }
 

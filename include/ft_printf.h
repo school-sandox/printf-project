@@ -6,7 +6,7 @@
 /*   By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 22:30:46 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/10/24 03:45:25 by jmacgyve         ###   ########.fr       */
+/*   Updated: 2019/10/24 04:14:40 by jmacgyve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,7 @@ void					buffer(t_printf *p, void *new_elem, size_t size);
 void					buffer_flush(t_printf *p);
 
 void					padding(t_printf *p, int n);
+void					set_lf(t_printf *p);
+void					set_cdsuobx(t_printf *p);
 
 #endif

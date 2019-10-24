@@ -6,7 +6,7 @@
 /*   By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 21:38:57 by jmacgyve          #+#    #+#             */
-/*   Updated: 2019/10/24 03:43:34 by jmacgyve         ###   ########.fr       */
+/*   Updated: 2019/10/24 04:04:10 by jmacgyve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			pf_putdouble_lf(t_printf *p)
 	int				len;
 	long double		decimal;
 	long			value;
-	
+
 	n = va_arg(p->ap, long double);
 	(p->f & F_ZERO) ? p->accuracy = p->min_length : 0;
 	if (!(p->f & F_APP_PRECI))
@@ -114,4 +114,10 @@ void			pf_putdouble_lf(t_printf *p)
 	decimal = ((long)decimal % 10 > 4) ? (decimal) / 10 + 1 : decimal / 10;
 	value = (int)decimal;
 	ldtoa_fill(n, p, value);
+}
+
+void			set_lf(t_printf *p)
+{
+	p->is_lf = 'y';
+	p->f |= F_LONG2;
 }

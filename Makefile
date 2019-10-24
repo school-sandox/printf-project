@@ -6,7 +6,7 @@
 #    By: jmacgyve <jmacgyve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/03 22:30:54 by jmacgyve          #+#    #+#              #
-#    Updated: 2019/10/21 22:56:49 by jmacgyve         ###   ########.fr        #
+#    Updated: 2019/10/24 04:15:08 by jmacgyve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SOURCES = ft_printf.c \
 		  parse_arguments.c \
 		  handle_numbers.c \
 		  handle_strings.c \
-		  bonus_functions.c
+		  bonus_functions.c \
+		  additional_functions.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
